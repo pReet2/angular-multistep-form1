@@ -8,7 +8,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class AppComponent {
   title = 'multistep-form1';
-  model = {}
+  
      
   isLinear = true;
   firstFormGroup: FormGroup;
