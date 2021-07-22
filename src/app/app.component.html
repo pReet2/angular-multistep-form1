@@ -1,0 +1,57 @@
+<h3>Fill out the form</h3>
+ 
+<mat-horizontal-stepper [linear]="isLinear" #stepper>
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>Basic Details</ng-template>
+      <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input matInput placeholder="Name" formControlName="name" required>
+      </mat-form-field>
+      <br/>
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input type="email" matInput placeholder="Email" formControlName="email" required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>Age & Address</ng-template>
+      <mat-form-field>
+        <mat-label>Age</mat-label>
+        <input type="number" matInput placeholder="Age" formControlName="age" required>
+      </mat-form-field>
+      <br/>
+      <mat-form-field>
+        <mat-label>Address</mat-label>
+        <input type="text" matInput placeholder="Address" formControlName="address" required>
+      </mat-form-field>
+      <br/>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    <p>You are now done.</p>
+  
+    <mat-list>
+	 <mat-list-item> <strong>Name: </strong> {{ this.firstFormGroup.value.name }}</mat-list-item>
+	 <mat-list-item> <strong>Email: </strong> {{ this.firstFormGroup.value.email }}</mat-list-item>
+	 <mat-list-item> <strong>Age: </strong> {{ this.secondFormGroup.value.age }}</mat-list-item>
+	 <mat-list-item> <strong>Address: </strong> {{ this.secondFormGroup.value.address }}</mat-list-item>
+	</mat-list>
+  
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="stepper.reset()">Reset</button>
+      <button mat-button (click)="submit()">Submit</button>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>
